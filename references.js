@@ -30,12 +30,25 @@ var User = mongoose.model("User", userSchema);
 // });
 
 Post.create({
-    title: "How to Cook the Best Burger",
+    title: "How to Cook the Best Burger Part 2",
     content: "Blah blah blah"
 }, function(err, post){
     if(err){
         console.log(err);
     }else{
-        console.log(post);
+        User.findOne({email: "bob@gmail.com"}, function(err, foundUser){
+            if(err){
+                console.log(err);
+            }else{
+                foundUser.posts.push(post);
+                foundUser.save(function(err, data){
+                   if(err){
+                       console.log(err);
+                   }else{
+                       console.log(data);
+                   }
+                });
+            }
+        });
     }
 });

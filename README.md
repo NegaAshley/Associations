@@ -5,5 +5,7 @@
 * One, one:many, and many:many relationships
 
 ## Embaedding Data
+* User
+* Post
 
 ## Referencing Data
