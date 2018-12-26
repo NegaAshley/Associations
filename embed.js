@@ -55,5 +55,16 @@ User.findOne({name: "Charlie Xu"}, function(err, user){
         console.log(err);
     }else{
         console.log(user);
+        user.posts.push({
+            title: "Three Ways to Win Dominions",
+            content: "1. You can't. 2. Play more. 3. Good luck!"
+        });
+        user.save(function(err, user){
+            if(err){
+                console.log(err);
+            }else{
+                console.log(user);
+            }
+        });
     }
 });
