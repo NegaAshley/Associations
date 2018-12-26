@@ -24,7 +24,18 @@ var userSchema = new mongoose.Schema({
 var User = mongoose.model("User", userSchema);
 
 
-User.create({
-    email: "bob@gmail.com",
-    name: "Bob Belcher"
+// User.create({
+//     email: "bob@gmail.com",
+//     name: "Bob Belcher"
+// });
+
+Post.create({
+    title: "How to Cook the Best Burger",
+    content: "Blah blah blah"
+}, function(err, post){
+    if(err){
+        console.log(err);
+    }else{
+        console.log(post);
+    }
 });
