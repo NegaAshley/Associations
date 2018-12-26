@@ -1,14 +1,6 @@
 var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/blog_demo");
 
-//User - email and name
-var userSchema = new mongoose.Schema({
-    email: String,
-    name: String
-});
-
-var User = mongoose.model("User", userSchema);
-
 //Post - title, content
 var postSchema = new mongoose.Schema({
     title: String,
@@ -17,28 +9,43 @@ var postSchema = new mongoose.Schema({
 
 var Post = mongoose.model("Post", postSchema);
 
-// var newUser = new User({
-//     email: "charlie@brown.edu",
-//     name: "Charlie Brown"
-// });
-
-// newUser.save(function(err, user){
-//     if(err){
-//         console.log(err);
-//     }else{
-//         console.log(user);
-//     }
-// });
-
-var newPost = new Post({
-    title: "Reflections on Apples",
-    content: "They are delicious."
+//User - email and name
+var userSchema = new mongoose.Schema({
+    email: String,
+    name: String,
+    posts: [postSchema]
 });
 
-newPost.save(function(err, post){
+var User = mongoose.model("User", userSchema);
+
+
+var newUser = new User({
+    email: "charliexu@brown.edu",
+    name: "Charlie Xu"
+});
+
+newUser.posts.push({
+    title: "How to Play Dominions",
+    content: "Just put in 1000 hours."
+});
+
+newUser.save(function(err, user){
     if(err){
         console.log(err);
     }else{
-        console.log(post);
+        console.log(user);
     }
 });
+
+// var newPost = new Post({
+//     title: "Reflections on Apples",
+//     content: "They are delicious."
+// });
+
+// newPost.save(function(err, post){
+//     if(err){
+//         console.log(err);
+//     }else{
+//         console.log(post);
+//     }
+// });
