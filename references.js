@@ -29,26 +29,37 @@ var User = mongoose.model("User", userSchema);
 //     name: "Bob Belcher"
 // });
 
-Post.create({
-    title: "How to Cook the Best Burger Part 3",
-    content: "adsfasdfasd asdf asdfasdf"
-}, function(err, post){
+// Post.create({
+//     title: "How to Cook the Best Burger Part 3",
+//     content: "adsfasdfasd asdf asdfasdf"
+// }, function(err, post){
+//     if(err){
+//         console.log(err);
+//     }else{
+//         User.findOne({email: "bob@gmail.com"}, function(err, foundUser){
+//             if(err){
+//                 console.log(err);
+//             }else{
+//                 foundUser.posts.push(post);
+//                 foundUser.save(function(err, data){
+//                   if(err){
+//                       console.log(err);
+//                   }else{
+//                       console.log(data);
+//                   }
+//                 });
+//             }
+//         });
+//     }
+// });
+
+//Find user
+User.findOne({email: "bob@gmail.com"}).populate("posts").exec(function(err, user){
     if(err){
         console.log(err);
     }else{
-        User.findOne({email: "bob@gmail.com"}, function(err, foundUser){
-            if(err){
-                console.log(err);
-            }else{
-                foundUser.posts.push(post);
-                foundUser.save(function(err, data){
-                   if(err){
-                       console.log(err);
-                   }else{
-                       console.log(data);
-                   }
-                });
-            }
-        });
+        console.log(user);
     }
 });
+
+//Find all posts for that user.
