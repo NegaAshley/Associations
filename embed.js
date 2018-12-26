@@ -19,23 +19,23 @@ var userSchema = new mongoose.Schema({
 var User = mongoose.model("User", userSchema);
 
 
-var newUser = new User({
-    email: "charliexu@brown.edu",
-    name: "Charlie Xu"
-});
+// var newUser = new User({
+//     email: "charliexu@brown.edu",
+//     name: "Charlie Xu"
+// });
 
-newUser.posts.push({
-    title: "How to Play Dominions",
-    content: "Just put in 1000 hours."
-});
+// newUser.posts.push({
+//     title: "How to Play Dominions",
+//     content: "Just put in 1000 hours."
+// });
 
-newUser.save(function(err, user){
-    if(err){
-        console.log(err);
-    }else{
-        console.log(user);
-    }
-});
+// newUser.save(function(err, user){
+//     if(err){
+//         console.log(err);
+//     }else{
+//         console.log(user);
+//     }
+// });
 
 // var newPost = new Post({
 //     title: "Reflections on Apples",
@@ -49,3 +49,11 @@ newUser.save(function(err, user){
 //         console.log(post);
 //     }
 // });
+
+User.findOne({name: "Charlie Xu"}, function(err, user){
+    if(err){
+        console.log(err);
+    }else{
+        console.log(user);
+    }
+});
