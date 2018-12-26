@@ -30,8 +30,8 @@ var User = mongoose.model("User", userSchema);
 // });
 
 Post.create({
-    title: "How to Cook the Best Burger Part 2",
-    content: "Blah blah blah"
+    title: "How to Cook the Best Burger Part 3",
+    content: "adsfasdfasd asdf asdfasdf"
 }, function(err, post){
     if(err){
         console.log(err);
