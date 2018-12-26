@@ -17,15 +17,28 @@ var postSchema = new mongoose.Schema({
 
 var Post = mongoose.model("Post", postSchema);
 
-var newUser = new User({
-    email: "charlie@brown.edu",
-    name: "Charlie Brown"
+// var newUser = new User({
+//     email: "charlie@brown.edu",
+//     name: "Charlie Brown"
+// });
+
+// newUser.save(function(err, user){
+//     if(err){
+//         console.log(err);
+//     }else{
+//         console.log(user);
+//     }
+// });
+
+var newPost = new Post({
+    title: "Reflections on Apples",
+    content: "They are delicious."
 });
 
-newUser.save(function(err, user){
+newPost.save(function(err, post){
     if(err){
         console.log(err);
     }else{
-        console.log(user);
+        console.log(post);
     }
 });
